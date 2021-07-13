@@ -2,8 +2,8 @@
 
 const bcrypt = require("bcrypt");
 
-const { User } = require("../models");
 const { generateAccessToken } = require("../utilities/jwt");
+const { User } = require("../models");
 const BadRequestException = require("../exceptions/BadRequestException");
 
 class AuthController {
@@ -24,8 +24,7 @@ class AuthController {
     const user = await User.where({ username }).fetch();
     if (!user) throw new BadRequestException("Username or password is incorrect");
 
-    const passwordCorrect = await bcrypt.compare(password, user.hash);
-    console.log({ passwordCorrect });
+    const passwordCorrect = await bcrypt.compare(password, user.attributes.password);
     if (!passwordCorrect) throw new BadRequestException("Username or password is incorrect");
 
     const token = generateAccessToken({ username });

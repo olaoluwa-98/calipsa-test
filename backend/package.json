@@ -7,6 +7,7 @@
     "dev": "DEBUG=backend:* nodemon ./bin/www",
     "knex": "knex",
     "load-data": "node ./app/commands/load-data",
+    "create-user": "node ./app/commands/create-user",
     "migrate:latest": "knex migrate:latest --knexfile=config/knexfile.js",
     "migrate:rollback": "knex migrate:rollback --knexfile=config/knexfile.js"
   },

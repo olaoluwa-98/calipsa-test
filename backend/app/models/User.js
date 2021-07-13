@@ -2,7 +2,7 @@
 
 const bcrypt = require("bcrypt");
 
-const bookshelf = require("./bookshelf");
+const { bookshelf } = require("./bookshelf");
 
 const User = bookshelf.model("User", {
   hasTimestamps: true,

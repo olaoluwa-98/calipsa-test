@@ -1,12 +1,8 @@
 "use strict";
-
-require("dotenv").config();
-
 const _ = require("lodash");
 
+const { knex } = require("../models");
 const alarmsData = require("../data/data.1625586027.json");
-const config = require("../../config/knexfile").config;
-const knex = require("knex")(config);
 const logger = require("../utilities/logger");
 
 const loadFileToDb = async () => {
@@ -31,7 +27,7 @@ const loadFileToDb = async () => {
 };
 
 loadFileToDb()
-  .then(data => {
+  .then(() => {
     logger.info("Success loading json data into database");
     knex.destroy();
   })
