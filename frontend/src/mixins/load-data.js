@@ -1,7 +1,12 @@
 export default {
   data() {
     return {
-      loadingState: "idle"
+      loadingState: "idle",
+      meta: {
+        page: 1,
+        pageSize: 10,
+        pageCount: 1,
+      },
     };
   },
 
@@ -24,7 +29,7 @@ export default {
           }
           this.$router
             .replace({
-              path: route
+              path: route,
             })
             .catch(() => {});
           return;
@@ -36,6 +41,6 @@ export default {
         if (!["NotFoundException", "NetworkException"].includes(error.name))
           throw error;
       }
-    }
-  }
+    },
+  },
 };

@@ -3,7 +3,7 @@ import * as ENDPOINTS from "@/api/endpoints";
 const initialState = () => {
   return {
     alarms: {
-      data: {},
+      data: [],
       meta: {
         page: 1,
         pageSize: 10,
@@ -24,8 +24,8 @@ const getters = {
 const mutations = {
   SET_ALARMS_MUTATION(state, { data, meta }) {
     state.alarms = {
-      data: { ...state.alarms.data },
-      meta: { ...state.alarms.meta },
+      data: [...state.alarms.data, ...data],
+      meta: { ...state.alarms.meta, ...meta },
       doneInitialLoading: true,
     };
   },
@@ -39,13 +39,14 @@ const actions = {
     commit("SET_ALARMS_MUTATION", alarms);
   },
 
-  async GET_ALARMS({ commit, getters }) {
+  async GET_ALARMS({ commit, getters }, filters) {
     if (getters.ALARMS.doneInitialLoading) {
       return;
     }
 
-    const alarms = await this._vm.$api.get(ENDPOINTS.ALARMS);
+    const alarms = await this._vm.$api.get(ENDPOINTS.ALARMS, filters);
     commit("SET_ALARMS_MUTATION", alarms);
+    return alarms;
   },
 };
 

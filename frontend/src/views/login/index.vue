@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex align-items-center justify-content-center">
-    <b-form @submit="$_submit" class="text-left mt-2 pt-2">
+    <b-form @submit.prevent="$_submit" class="text-left mt-2 pt-2">
       <b-form-group
         :invalid-feedback="formErrors.username"
         :state="fieldState.username"
@@ -27,7 +27,7 @@
           required
         ></b-form-input>
       </b-form-group>
-      <b-button @click="$_submit" class="w-100">{{
+      <b-button type="submit" @submit="$_submit" class="w-100">{{
         submitting ? "Logging In" : "Log In"
       }}</b-button>
     </b-form>

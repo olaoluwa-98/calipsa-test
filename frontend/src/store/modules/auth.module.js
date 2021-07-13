@@ -1,5 +1,5 @@
 import app from "@/main";
-import { LOGIN } from "@/api/endpoints";
+import { LOGIN, USER } from "@/api/endpoints";
 import { LOGIN as loginRoute } from "@/router/routes";
 
 const state = {
@@ -24,12 +24,14 @@ const actions = {
   },
 
   async GET_USER({ commit }) {
-    const user = await this._vm.$api.get(ENDPOINTS.USER);
+    const user = await this._vm.$api.get(USER);
     commit("SET_USER_MUTATION", user);
   },
 
-  async login({ dispatch, commit }, payload) {
-    const { user, token } = await this._vm.$api.post(LOGIN, payload);
+  async login({ dispatch }, payload) {
+    const {
+      data: { user, token },
+    } = await this._vm.$api.post(LOGIN, payload);
     await dispatch("authenticateUser", { token, user });
   },
 
