@@ -1,10 +1,10 @@
 "use strict";
 
 const express = require("express");
-const users = require("./users");
+const alarms = require("./alarms");
 
 const router = express.Router();
 
-router.use("/users", users);
+router.use("/alarms", alarms);
 
 module.exports = router;
