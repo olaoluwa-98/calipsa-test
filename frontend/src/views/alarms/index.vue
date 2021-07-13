@@ -16,6 +16,12 @@
             {{ data.value.name }}
           </p>
         </template>
+
+        <template v-slot:cell(timestamp)="data">
+          <p>
+            {{ $utils.renderDate(data.value) }}
+          </p>
+        </template>
       </b-table>
       <b-pagination
         v-model="meta.page"
@@ -40,7 +46,7 @@ export default {
         "id",
         { key: "location", label: "Location" },
         "outcome",
-        "timestamp",
+        { key: "timestamp", label: "Timestamp" },
       ],
     };
   },

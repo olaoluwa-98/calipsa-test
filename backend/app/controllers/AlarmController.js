@@ -40,6 +40,32 @@ class AlarmController {
       meta: data.pagination
     });
   }
+
+  /**
+   * Returns a JSON response of one alarm data
+   *
+   * @method getAlarm
+   * @memberof AlarmController
+   *
+   * @param {Object} req
+   * @param {Object} res
+   *
+   * @returns Promise<Object>
+   */
+  static async getAlarm(req, res) {
+    req.params.id;
+
+    const data = await Alarm.where({ id: req.params.id }).fetch({
+      required: true,
+      withRelated: ["location"]
+    });
+
+    return res.json({
+      status: "success",
+      message: "Alarm retrieved",
+      data
+    });
+  }
 }
 
 module.exports = AlarmController;

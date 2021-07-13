@@ -12,6 +12,7 @@ const initialState = () => {
       },
       doneInitialLoading: false,
     },
+    alarm: {},
   };
 };
 
@@ -19,6 +20,7 @@ const state = () => initialState();
 
 const getters = {
   ALARMS: (state) => state.alarms,
+  ALARM: (state) => state.alarm,
 };
 
 const mutations = {
@@ -29,6 +31,10 @@ const mutations = {
       doneInitialLoading: true,
     };
   },
+  SET_ALARM_MUTATION(state, data) {
+    const current = state.alarm;
+    state.alarm = { ...current, [data.id]: data };
+  },
   RESET_STATE(state) {
     Object.assign(state, initialState());
   },
@@ -37,6 +43,12 @@ const mutations = {
 const actions = {
   async SET_ALARMS({ commit }, alarms) {
     commit("SET_ALARMS_MUTATION", alarms);
+  },
+
+  async GET_ALARM({ commit }, id) {
+    const { data: alarm } = await this._vm.$api.get(ENDPOINTS.ALARM(id));
+    commit("SET_ALARM_MUTATION", alarm);
+    return alarm;
   },
 
   async GET_ALARMS({ commit, getters }, filters) {

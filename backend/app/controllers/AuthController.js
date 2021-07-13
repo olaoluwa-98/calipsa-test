@@ -54,9 +54,7 @@ class AuthController {
     return res.json({
       status: "success",
       message: "User fetched successful",
-      data: {
-        user: req.user
-      }
+      data: req.user
     });
   }
 }

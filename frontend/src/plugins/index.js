@@ -4,3 +4,4 @@ import "./vue-toasted";
 
 // Internal libraries
 import "./http";
+import "./utils";

@@ -9,5 +9,6 @@ const auth = require("../middlewares/auth");
 const router = express.Router();
 
 router.get("/", auth, wrapAsync(AlarmController.getAlarms));
+router.get("/:id", auth, wrapAsync(AlarmController.getAlarm));
 
 module.exports = router;

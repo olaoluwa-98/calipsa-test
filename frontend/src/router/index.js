@@ -3,7 +3,7 @@ import Router from "vue-router";
 
 import Login from "@/views/login";
 import Alarms from "@/views/alarms";
-// import Alarm from "@/views/alarms/_id";
+import Alarm from "@/views/alarms/_id";
 
 import { isUserLoggedIn } from "@/utils/auth";
 import * as ROUTES from "./routes";
@@ -44,15 +44,15 @@ const router = new Router({
         requiresAuth: true,
       },
     },
-    // {
-    //   path: ROUTES.ALARM,
-    //   name: "alarm",
-    //   component: Alarm,
-    //   meta: {
-    //     title: "View Alarm",
-    //     requiresAuth: true,
-    //   },
-    // },
+    {
+      path: ROUTES.ALARM,
+      name: "alarm",
+      component: Alarm,
+      meta: {
+        title: "View Alarm",
+        requiresAuth: true,
+      },
+    },
   ],
 });
 
