@@ -1,0 +1,65 @@
+// RESETS
+* {
+  box-sizing: border-box;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+  overscroll-behavior: none;
+}
+
+html {
+  overscroll-behavior-y: none;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.boldest {
+  font-weight: 900;
+}
+
+.text-underline {
+  text-decoration: underline !important;
+}
+
+.toasted.toast.bubble {
+  border: 1px solid transparent;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    padding: 1rem 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  padding-top: 1rem;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 1rem);
+
+  &.success {
+    background-color: #e2f3cf44;
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+  }
+
+  &.error {
+    // background-color: var(--danger);
+    background-color: #dc3545;
+    // border-color: var(--failed);
+    color: var(--white);
+  }
+
+  &.info {
+    background-color: var(--secondary);
+  }
+}
+div.toasted-container,
+div.toasted-container.full-width {
+  display: block;
+}
