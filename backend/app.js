@@ -1,16 +1,20 @@
 "use strict";
 
-const express = require("express");
 const cookieParser = require("cookie-parser");
-const logger = require("morgan");
+const express = require("express");
+const fs = require("fs");
+const morgan = require("morgan");
+const path = require("path");
 
 const router = require("./app/routes");
 const { errorHandler } = require("./app/middlewares/error");
 
 const app = express();
 
-app.use(logger("combined"));
-// app.use(logger("dev"));
+// create a write stream (in append mode)
+const accessLogStream = fs.createWriteStream(path.join(__dirname, "logs/access.log"), { flags: "a" });
+
+app.use(morgan("combined", { stream: accessLogStream }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
