@@ -2,8 +2,8 @@
 
 const express = require("express");
 
-const AlarmController = require("../controllers/AlarmController");
 const { wrapAsync } = require("../middlewares/error");
+const AlarmController = require("../controllers/AlarmController");
 const auth = require("../middlewares/auth");
 
 const router = express.Router();

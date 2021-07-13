@@ -1,6 +1,7 @@
 "use strict";
 
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const express = require("express");
 const fs = require("fs");
 const morgan = require("morgan");
@@ -19,6 +20,12 @@ app.use(morgan("combined", { stream: accessLogStream }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: (process.env.ORIGIN_WHITELIST || "http://localhost:8080").split(",")
+    // methods: "GET,HEAD,PUT,PATCH,POST,DELETE"
+  })
+);
 
 const API_V1 = "/v1";
 app.use(API_V1, router);

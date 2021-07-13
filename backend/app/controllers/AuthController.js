@@ -33,7 +33,29 @@ class AuthController {
       status: "success",
       message: "Login successful",
       data: {
-        token
+        token,
+        user
+      }
+    });
+  }
+
+  /**
+   * Returns username of the user
+   *
+   * @method getUser
+   * @memberof AuthController
+   *
+   * @param {Object} req
+   * @param {Object} res
+   *
+   * @returns Promise<Object>
+   */
+  static async getUser(req, res) {
+    return res.json({
+      status: "success",
+      message: "User fetched successful",
+      data: {
+        user: req.user
       }
     });
   }

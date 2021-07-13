@@ -37,10 +37,7 @@ class AlarmController {
       status: "success",
       message: "Alarms retrieved",
       data,
-      meta: {
-        page: Number(page),
-        pageSize: Number(pageSize)
-      }
+      meta: data.pagination
     });
   }
 }
