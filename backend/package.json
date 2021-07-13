@@ -4,13 +4,23 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "DEBUG=backend:* nodemon ./bin/www"
+    "dev": "DEBUG=backend:* nodemon ./bin/www",
+    "knex": "knex",
+    "load-data": "node ./app/commands/load-data",
+    "migrate:latest": "knex migrate:latest --knexfile=config/knexfile.js",
+    "migrate:rollback": "knex migrate:rollback --knexfile=config/knexfile.js"
   },
   "dependencies": {
+    "bookshelf": "^1.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "express": "~4.16.1",
+    "knex": "^0.21.0",
+    "lodash": "^4.17.21",
     "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "parse-database-url": "^0.3.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {
