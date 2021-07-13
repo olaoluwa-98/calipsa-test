@@ -1,10 +1,10 @@
-# Calipsa Test Frontend
+# Calipsa Test Backend
 
-This repository houses frontend code for Calipsa test.
+This repository houses backend code for Calipsa test.
 
 ## Table of Contents
 
-- [Calipsa Test Frontend](#calipsa-test-frontend)
+- [Calipsa Test Backend](#calipsa-test-backend)
   - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
     - [Dependencies](#dependencies)
@@ -12,6 +12,7 @@ This repository houses frontend code for Calipsa test.
     - [Installation & Usage](#installation--usage)
     - [API Documentation](#api-documentation)
     - [Running Tests](#running-tests)
+      - [Other Tests](#other-tests)
   - [How to Get Help](#how-to-get-help)
   - [Further Reading](#further-reading)
   - [License](#license)
@@ -22,7 +23,10 @@ This repository houses frontend code for Calipsa test.
 
 ### Dependencies
 
-This project uses [Vue.js](https://vuejs.org/) v2.6.11.
+This project uses [Express](https://expressjs.com/) v4.16.1. It has the following dependencies.
+
+- [Node.js >= 8.0.0](https://nodejs.org/en/download)
+- [MySQL Database](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en)
 
 ### Getting the Source
 
@@ -34,7 +38,7 @@ git clone git@github.com:/olaoluwa-98/calipsa-test.git
 
 ### Installation & Usage
 
-After cloning the repository, create a `.env.local` file from `.env.example` and set your local .env variables.
+After cloning the repository, create a `.env` file from `.env.example` and set your local .env variables.
 
 ```sh
 cp .env.example .env
@@ -46,6 +50,30 @@ Install the dependencies
 npm install
 ```
 
+Run migration using
+
+```sh
+npm run migrate:latest
+```
+
+Run migration rollback
+
+```sh
+npm run migrate:rollback
+```
+
+After running migrations, you should run the commands below to load the alarms data & a sample user into the database
+
+```sh
+npm run load-data
+npm run create-user
+```
+
+The user's credentials are:
+
+- username: elonmusk
+- password: spacex
+
 Run dev server
 
 ```sh
@@ -54,12 +82,17 @@ npm run dev
 
 ### API Documentation
 
-The endpoints used in this project are documented at: https://documenter.getpostman.com/view/2022647/Tzm9iEMv
+The endpoints in this project are documented at: https://documenter.getpostman.com/view/2022647/Tzm9iEMv
 
 ### Running Tests
 
 There are currently no unit tests for this project but it's a work in progress
 
+#### Other Tests
+
+There's a pre-commit hook that formats your code when you commit changes. It's automatically installed when you run `npm install`
+
+**[Back to top](#table-of-contents)**
 
 ## How to Get Help
 
@@ -67,7 +100,7 @@ Notice a bug? please open an issue. Need more clarification on any part of the c
 
 ## Further Reading
 
-- [Vue.js](https://vuejs.org/)
+- [Express](https://expressjs.com/)
 
 **[Back to top](#table-of-contents)**
 
